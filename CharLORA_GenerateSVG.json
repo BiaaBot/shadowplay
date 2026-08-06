@@ -1,0 +1,255 @@
+{
+  "199": {
+    "inputs": {
+      "filename_prefix": "png",
+      "images": [
+        "204",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image PNG"
+    }
+  },
+  "201": {
+    "inputs": {
+      "filename_prefix": "svg",
+      "append_timestamp": true,
+      "custom_output_path": "",
+      "SVG_String": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "TS_SaveSVGString",
+    "_meta": {
+      "title": "Save SVG String"
+    }
+  },
+  "202": {
+    "inputs": {
+      "mode": "spline",
+      "filter_speckle": 8,
+      "corner_threshold": 80,
+      "length_threshold": 8,
+      "splice_threshold": 70,
+      "image": [
+        "203",
+        0
+      ]
+    },
+    "class_type": "TS_ImageToSVGStringBW_Vtracer",
+    "_meta": {
+      "title": "Image to SVG String BW_Vtracer"
+    }
+  },
+  "203": {
+    "inputs": {
+      "colors": 5,
+      "dither": "Clear",
+      "image": [
+        "226",
+        0
+      ]
+    },
+    "class_type": "TS_ImageQuantize",
+    "_meta": {
+      "title": "Image Quantize"
+    }
+  },
+  "204": {
+    "inputs": {
+      "SVG_String": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "TS_SVGStringToImage",
+    "_meta": {
+      "title": "SVG String to Image"
+    }
+  },
+  "211": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_jefqu_00001_.png&type=temp&subfolder=&rand=0.4428911240919893"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_jefqu_00002_.png&type=temp&subfolder=&rand=0.5738620278762249"
+          }
+        ]
+      },
+      "image_a": [
+        "226",
+        0
+      ],
+      "image_b": [
+        "204",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "219": {
+    "inputs": {
+      "text": "shadowstyle, fairy jumping in the air, dynamic pose, wings spread, shadow puppet, solid black figure, clean edges, high contrast, white background",
+      "clip": [
+        "222",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "220": {
+    "inputs": {
+      "text": "no text, gradients",
+      "clip": [
+        "222",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "221": {
+    "inputs": {
+      "seed": 499722205504855,
+      "steps": 24,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "224",
+        0
+      ],
+      "positive": [
+        "219",
+        0
+      ],
+      "negative": [
+        "220",
+        0
+      ],
+      "latent_image": [
+        "225",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "222": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "223": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "224": {
+    "inputs": {
+      "lora_name": "shadowstyleLoRA.safetensors",
+      "strength_model": 1,
+      "model": [
+        "223",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "225": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "226": {
+    "inputs": {
+      "samples": [
+        "221",
+        0
+      ],
+      "vae": [
+        "227",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "227": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "230": {
+    "inputs": {
+      "SVG_String": [
+        "202",
+        0
+      ]
+    },
+    "class_type": "TS_SVGStringPreview",
+    "_meta": {
+      "title": "SVG String Preview"
+    }
+  },
+  "231": {
+    "inputs": {
+      "images": [
+        "226",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  }
+}

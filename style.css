@@ -1,0 +1,1436 @@
+/* ======================================================
+   FONTS
+====================================================== */
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("Nunito-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ======================================================
+   VARIABLES
+====================================================== */
+
+:root {
+  --bg: #f7f7f7;
+  --card: #ffffff;
+  --text: #111111;
+  --muted: #555555;
+  --line: #d9d9d9;
+
+  --cream: #EEE2CE;
+  --gold: #BA8E54;
+  --black: #000000;
+
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --shadow-button: 0 22px 48px rgba(0, 0, 0, 0.20);
+}
+
+
+/* ======================================================
+   RESET
+====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Nunito", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* ======================================================
+   TYPOGRAPHY
+====================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.landing-screen__eyebrow,
+.btn {
+  font-family: "Playfair Display", serif;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin: 0 0 22px;
+  color: var(--gold);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0 0 14px;
+  color: var(--black);
+}
+
+.small {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+
+/* ======================================================
+   LANDING PAGE
+====================================================== */
+
+body.landing-active .topbar {
+  display: none;
+}
+
+.landing-screen {
+  position: fixed;
+  inset: 0;
+
+  display: grid;
+  align-items: center;
+  justify-items: start;
+
+  min-height: 100vh;
+  padding-left: 6vw;
+
+  background-image: url("fpBg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: var(--cream);
+}
+
+.landing-screen__content {
+  width: min(100%, 760px);
+  padding: 40px;
+}
+
+.landing-screen__copy {
+  max-width: 560px;
+  text-align: left;
+}
+
+.landing-screen__eyebrow {
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: rgba(238, 226, 206, 0.85);
+}
+
+.landing-screen h1 {
+  margin: 0 0 18px;
+
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  line-height: 1.02;
+
+  color: var(--cream);
+}
+
+.landing-screen p {
+  max-width: 42rem;
+  margin: 0 0 32px;
+
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  color: var(--cream);
+}
+
+.landing-screen__start {
+  padding: 18px 36px;
+
+  border: 2px solid var(--cream);
+  border-radius: var(--radius-pill);
+
+  background: rgba(238, 226, 206, 0.18);
+  color: var(--cream);
+
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.landing-screen__start:hover {
+  transform: translateY(-2px);
+  background: rgba(238, 226, 206, 0.28);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.26);
+}
+
+
+/* ======================================================
+   MAIN STORY PAGE LAYOUT
+====================================================== */
+
+.story-page,
+.step1-page {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 60px 18px 40px 80px;
+  overflow-y: auto;
+
+  background-image: url("BGStep1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: var(--black);
+}
+
+.page-card,
+.step1-page .card {
+  position: relative;
+  z-index: 1;
+
+  width: min(1000px, 100%);
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+
+/* ======================================================
+   TOPBAR
+====================================================== */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  padding: 14px 18px;
+
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+
+/* ======================================================
+   HOME BUTTON
+====================================================== */
+
+.home-button {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+
+  width: 64px;
+  height: 64px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.home-button:hover {
+  transform: scale(1.15);
+}
+
+.home-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  border: none;
+  background: transparent;
+}
+
+/* ======================================================
+   FORMS
+====================================================== */
+
+.form-grid,
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(320px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.form-column,
+.section-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-panel,
+.form-section {
+  padding: 20px;
+
+  border: 2px solid var(--black);
+  border-radius: var(--radius-lg);
+
+  background: transparent;
+  margin-bottom: 32px;
+}
+
+.asset-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.form-field,
+.field {
+  margin: 16px 0;
+}
+
+label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--text);
+  font-size: 14px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid rgba(0, 0, 0, .14);
+  border-radius: var(--radius-sm);
+
+  background: var(--cream);
+  color: var(--text);
+
+  outline: none;
+
+  transition: border .2s ease,
+    box-shadow .2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+
+  border-color: var(--gold);
+
+  box-shadow: 0 0 0 3px rgba(186, 142, 84, .15);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(17, 17, 17, .65);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+.prompt-editor {
+  min-height: 420px;
+  max-height: 70vh;
+}
+
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+
+.btn,
+.primary-button {
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 28px;
+
+  border: 3px solid var(--black);
+  border-radius: 999px;
+
+  background: transparent;
+
+  color: var(--black);
+
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+
+  cursor: pointer;
+
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
+
+  box-shadow: var(--shadow-button);
+}
+
+.btn:hover,
+.primary-button:hover {
+
+  transform: translateY(-2px);
+
+  background: rgba(238, 226, 206, .08);
+}
+
+.btn-small,
+.secondary {
+
+  padding: 12px 20px;
+
+  font-size: .95rem;
+
+  box-shadow: none;
+}
+
+
+/* ======================================================
+   NEXT BUTTON
+====================================================== */
+
+.page-next,
+.next-top {
+
+  position: fixed;
+
+  top: 24px;
+  right: 24px;
+
+  z-index: 100;
+}
+
+
+/* ======================================================
+   ACTION BAR
+====================================================== */
+
+.page-actions,
+.actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  flex-wrap: wrap;
+
+  margin-top: 28px;
+}
+
+
+/* ======================================================
+   BADGES
+====================================================== */
+
+.badge {
+
+  display: inline-block;
+
+  padding: 5px 10px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 999px;
+
+  background: white;
+
+  font-size: 12px;
+}
+
+
+/* ======================================================
+   HORIZONTAL RULE
+====================================================== */
+
+hr {
+
+  border: none;
+
+  border-top: 1px solid var(--line);
+
+  margin: 20px 0;
+}
+
+
+/* ======================================================
+   SLIDER
+====================================================== */
+
+.sliderWrap {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+.sliderValue {
+
+  min-width: 120px;
+
+  text-align: right;
+
+  color: var(--muted);
+}
+
+
+/* ======================================================
+   TABS
+====================================================== */
+
+.tabs {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 20px;
+}
+
+.tab-button {
+
+  padding: 10px 18px;
+
+  border: 2px solid var(--line);
+
+  border-radius: 999px;
+  border-color: #000000;
+
+  background: transparent;
+
+  font-family: "Playfair Display", serif;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.tab-button:hover,
+.tab-button.active {
+
+  border-color: var(--gold);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+}
+
+.tab-content {
+
+  margin-top: 16px;
+}
+
+/* ======================================================
+   Story Editor
+====================================================== */
+
+.story-editor {
+  width: 100%;
+  height: 70vh;
+  min-height: 650px;
+  resize: vertical;
+}
+
+.story-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0;
+}
+
+/* ======================================================
+   CARDS
+====================================================== */
+
+.asset-card,
+.charCard,
+.backgroundCard {
+
+  padding: 16px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow: var(--shadow-soft);
+}
+
+.charGrid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(240px, 1fr));
+
+  gap: 18px;
+}
+
+.backgroundsWrap {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(340px, 1fr));
+
+  gap: 22px;
+}
+
+.assetGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.asset-card {
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  padding: 20px;
+
+  border: 2px solid rgba(0, 0, 0, .08);
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+
+  transition: .25s;
+}
+
+.asset-card:hover {
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 18px 34px rgba(0, 0, 0, .12);
+}
+
+.asset-card h3 {
+
+  margin: 0;
+
+  font-size: 1.25rem;
+
+  color: var(--gold);
+
+  font-family: "Playfair Display", serif;
+}
+
+.asset-card img {
+
+  width: 100%;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(0, 0, 0, .08);
+
+  background: white;
+}
+
+.asset-status {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  width: fit-content;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: .9rem;
+
+  font-weight: 600;
+}
+
+.asset-status.waiting {
+
+  background: #f4f4f4;
+
+  color: #666;
+}
+
+.asset-status.generated {
+
+  background: #dff4df;
+
+  color: #2f6e2f;
+}
+
+.asset-status.generating {
+
+  background: #fff2d7;
+
+  color: #8d6b00;
+}
+
+.asset-status.failed {
+
+  background: #ffe1e1;
+
+  color: #b52d2d;
+}
+
+.asset-image {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 240px;
+}
+
+.edit-prompt-button {
+
+  margin-top: 4px;
+}
+
+.prompt-section {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-top: 6px;
+
+  overflow: hidden;
+
+  transition: .25s;
+}
+
+.prompt-section.hidden {
+
+  display: none;
+}
+
+.asset-prompt-editor {
+
+  min-height: 140px;
+
+  resize: vertical;
+}
+
+.edit-prompt-button {
+
+  align-self: flex-start;
+}
+
+/* ======================================================
+   FIGURE LABELS
+====================================================== */
+
+.figureTitle {
+
+  margin-bottom: 8px;
+
+  font-weight: 600;
+
+  color: var(--muted);
+}
+
+
+/* ======================================================
+   IMAGES
+====================================================== */
+
+.charCard img,
+.backgroundCard img {
+
+  display: block;
+
+  width: 100%;
+
+  margin-top: 12px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 12px;
+
+  background: white;
+}
+
+
+/* ======================================================
+   PLACEHOLDER
+====================================================== */
+
+.placeholder {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  margin-top: 12px;
+
+  border: 2px dashed var(--line);
+  border-radius: 12px;
+
+  color: var(--muted);
+
+  background: #fafafa;
+
+  text-align: center;
+}
+
+
+/* ======================================================
+   ACT ROWS
+====================================================== */
+
+.actRow {
+
+  display: grid;
+
+  grid-template-columns: 1.2fr 1fr;
+
+  gap: 16px;
+
+  padding: 16px;
+
+  margin: 18px 0;
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  background: white;
+}
+
+.actLeft textarea {
+  min-height: 140px;
+}
+
+/* ======================================================
+   MAIN CONTENT
+====================================================== */
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18px;
+}
+
+
+/* ======================================================
+   PAGE SECTIONS
+====================================================== */
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-section {
+  margin-bottom: 36px;
+}
+
+.page-section:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ======================================================
+   CHARACTER / BACKGROUND SECTIONS
+====================================================== */
+
+.charSection {
+  margin-top: 28px;
+}
+
+.backgroundSection {
+  margin-top: 28px;
+}
+
+
+/* ======================================================
+   STATUS TEXT
+====================================================== */
+
+.status-message {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.success {
+  color: #3f7d3f;
+}
+
+.warning {
+  color: #ad7b00;
+}
+
+.error {
+  color: #b73c3c;
+}
+
+
+/* ======================================================
+   SCROLLBARS
+====================================================== */
+
+textarea::-webkit-scrollbar,
+.story-page::-webkit-scrollbar {
+  width: 10px;
+}
+
+textarea::-webkit-scrollbar-thumb,
+.story-page::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, .18);
+  border-radius: 999px;
+}
+
+textarea::-webkit-scrollbar-track,
+.story-page::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+/* ======================================================
+   SELECTION
+====================================================== */
+
+::selection {
+  background: rgba(186, 142, 84, .25);
+}
+
+
+/* ======================================================
+   TRANSITIONS
+====================================================== */
+
+input,
+select,
+textarea,
+button,
+.asset-card,
+.charCard,
+.backgroundCard {
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+
+/* ======================================================
+   UTILITIES
+====================================================== */
+
+.hidden {
+  display: none !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mt-1 {
+  margin-top: 8px;
+}
+
+.mt-2 {
+  margin-top: 16px;
+}
+
+.mt-3 {
+  margin-top: 24px;
+}
+
+.mt-4 {
+  margin-top: 32px;
+}
+
+.mb-1 {
+  margin-bottom: 8px;
+}
+
+.mb-2 {
+  margin-bottom: 16px;
+}
+
+.mb-3 {
+  margin-bottom: 24px;
+}
+
+.mb-4 {
+  margin-bottom: 32px;
+}
+
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 1100px) {
+
+  .story-page {
+    padding-left: 40px;
+    padding-right: 24px;
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .form-grid,
+  .section-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+  .backgroundsWrap {
+
+    grid-template-columns: 1fr;
+  }
+
+  .charGrid {
+
+    grid-template-columns:
+      repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .actRow {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  .landing-screen {
+
+    justify-items: center;
+    padding: 24px;
+  }
+
+  .landing-screen__content {
+
+    width: 100%;
+    padding: 20px;
+  }
+
+  .landing-screen__copy {
+
+    text-align: center;
+    max-width: none;
+  }
+
+  .landing-screen h1 {
+
+    font-size: 2.8rem;
+  }
+
+  .story-page {
+
+    padding:
+      80px 18px 40px 18px;
+  }
+
+  .page-next,
+  .next-top {
+
+    top: 18px;
+    right: 18px;
+  }
+
+  .page-actions,
+  .actions {
+
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn,
+  .primary-button {
+
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+  .home-button {
+    width: 52px;
+    height: 52px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ======================================================
+   STEP 5B — GENERATED ASSETS
+====================================================== */
+
+.step5b-page {
+
+  padding-right: 70px;
+
+  background-image: url("lastBg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.step5b-page .card {
+  width: min(1520px, 100%);
+}
+
+.step5b-page .background-asset-card .asset-action-button {
+  margin-top: 1rem;
+}
+
+.step5b-page .character-asset-card .asset-action-button {
+  margin-top: 1rem;
+}
+
+.step5b-page .character-size-info {
+  min-height: 1.4em;
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+/* ---------- Typography ---------- */
+
+.step5b-page p,
+.step5b-page div,
+.step5b-page span,
+.step5b-page textarea,
+.step5b-page label {
+
+  font-family: "Nunito", sans-serif;
+  color: var(--black);
+}
+
+.step5b-page h1,
+.step5b-page h2,
+.step5b-page h3,
+.step5b-page .tab-button,
+.step5b-page .primary-button {
+
+  font-family: "Playfair Display", serif;
+}
+
+.step5b-page .small {
+
+  font-size: 16px;
+  line-height: 1.65;
+  color: #222;
+}
+
+
+/* ---------- GRID ---------- */
+
+.step5b-page .assetGrid {
+
+  display: grid;
+  gap: 34px;
+  margin-top: 34px;
+}
+
+
+/* ---------- BACKGROUND VIEW ---------- */
+
+.step5b-page .assetGrid:has(.background-asset-card) {
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(760px, 1fr));
+}
+
+
+/* ---------- CHARACTER VIEW ---------- */
+
+.step5b-page .assetGrid:has(.character-asset-card) {
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(420px, 1fr));
+}
+
+
+/* ---------- CARD ---------- */
+
+.step5b-page .asset-card {
+
+  background: transparent;
+
+  border: 2px solid #000;
+
+  border-radius: 22px;
+
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  box-shadow: none;
+
+  transition: .25s;
+}
+
+.step5b-page .asset-card:hover {
+
+  transform: translateY(-3px);
+}
+
+
+/* ---------- TITLES ---------- */
+
+.step5b-page .asset-card h3 {
+
+  font-size: 1.55rem;
+
+  margin: 0;
+
+  color: var(--gold);
+}
+
+
+/* ---------- IMAGE ---------- */
+
+.step5b-page .asset-image {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(255, 255, 255, .12);
+
+  border: 1px solid rgba(0, 0, 0, .18);
+
+  border-radius: 18px;
+
+  padding: 18px;
+}
+
+
+/* ---------- BACKGROUND IMAGE ---------- */
+
+.step5b-page .background-asset-card .asset-image {
+
+  min-height: 520px;
+}
+
+.step5b-page .background-asset-card img {
+
+  width: 100%;
+  max-height: 500px;
+
+  object-fit: contain;
+
+  border: none;
+
+  background: transparent;
+}
+
+
+/* ---------- CHARACTER IMAGE ---------- */
+
+.step5b-page .character-asset-card .asset-image {
+
+  min-height: 470px;
+}
+
+.step5b-page .character-asset-card img {
+
+  width: 100%;
+  max-height: 450px;
+
+  object-fit: contain;
+
+  border: none;
+
+  background: transparent;
+}
+
+
+/* ---------- STATUS ---------- */
+
+.step5b-page .asset-status {
+
+  font-family: "Nunito";
+
+  font-size: .95rem;
+}
+
+
+/* ---------- BUTTONS ---------- */
+
+.step5b-page .asset-action-button {
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  align-self: flex-start;
+
+  padding: 15px 28px;
+
+  border: 3px solid #000;
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: 1rem;
+
+  box-shadow: var(--shadow-button);
+
+  transition: .2s;
+}
+
+.step5b-page .asset-action-button:hover {
+
+  background: rgba(238, 226, 206, .10);
+
+  transform: translateY(-2px);
+}
+
+
+/* ---------- PROMPT ---------- */
+
+.step5b-page .asset-prompt-editor {
+
+  min-height: 170px;
+
+  font-family: "Nunito";
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* ---------- LOADING ---------- */
+
+.step5b-page .loading-placeholder {
+
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 18px;
+
+  font-family: "Nunito";
+}
